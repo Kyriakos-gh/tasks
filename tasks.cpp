@@ -6,7 +6,6 @@
 #include <string>
 #include <fstream>
 #include <vector>
-#include <cstdio>
 
 using namespace std;
 
@@ -90,7 +89,6 @@ void add_new_task(void)
 {
     fstream file;
     string task;
-    char c;
 
     file.open(FILENAME, ios::out | ios::app);
     
@@ -101,8 +99,8 @@ void add_new_task(void)
 
     cout << "Enter new task:" << endl;
 
-    c = getchar();
-
+ 
+    cin.ignore();
     getline(cin, task);
 
     file << task << endl;
@@ -114,7 +112,6 @@ void delete_task(void)
 {
     fstream file;
     vector<string> tasks;   // Our vector with the tasks
-    char c;
     int tasksnum = 0;
     int selection = 0;
 
@@ -137,10 +134,9 @@ void delete_task(void)
     file.close();
 
     if (tasksnum) {
-        c = getchar();
-
         cout << endl << "Enter number of task to be deleted:" << endl;
 
+        cin.ignore();
         cin >> selection;
 
         // Checks for valid selection
